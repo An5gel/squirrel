@@ -4,7 +4,6 @@
     <title>An5gel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -105,7 +104,6 @@
 		            <p>A talented and motivated Software Engineer with a passion for continuous learning and improvement..</p>
 		            <ul class="about-info mt-4 px-md-0 px-2">
 		            	<li class="d-flex"><span>Name:</span> <span>Angel Umwiza</span></li>
-		            	<li class="d-flex"><span>Date of birth:</span> <span>June 24, 2000</span></li>
 		            	<li class="d-flex"><span>Address:</span> <span>Kampala, Uganda</span></li>
 		            	<li class="d-flex"><span>Email:</span> <span>angelumwiza21@gmail.com</span></li>
 		            	<li class="d-flex"><span>Phone: </span> <span>+256-781-056-005</span></li>
@@ -369,7 +367,7 @@
 			</div>
 		</section>
 
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -418,37 +416,40 @@
           </div>
         </div>
 
-        <div class="row no-gutters block-9">
+        <!-- <div class="row no-gutters block-9">
           <div class="col-md-6 order-md-last d-flex">
-            <form action="#" class="bg-light p-4 p-md-5 contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST" id="form" class="bg-light p-4 p-md-5 contact-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+				<input type="hidden" name="form_id" value="form">
+				<input type="hidden" name="access_key" value="61f0d925-894a-485c-967f-8d48620274b5">
+                <input type="text" class="form-control" name="name" required placeholder="Your Name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
+                <input type="text" class="form-control"name="email" required placeholder="Your Email">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
               </div>
+			  <div class="h-captcha" data-captcha="true"></div>
               <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <!-- <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5"> -->
-				<p><a href="mailto:angelumwiza21@gmail.com" class="btn btn-primary py-3 px-5">Send Message</a></p>
+                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5"> -->
+				<!-- <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
 
               </div>
             </form>
+			<div id="successMessage" class="success-message">
+				<p>Thank you! Your message has been sent successfully.</p>
+			</div>
           
           </div>
 
           <div class="col-md-6 d-flex">
           	<div class="img" style="background-image: url(images/profile\ picture.jpeg);"></div>
           </div>
-        </div>
+        </div> -->
       </div>
-    </section>
-		
+    </section> 
+		 
 
     <footer class="ftco-footer ftco-section">
       <div class="container">
@@ -495,6 +496,31 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+	$(document).ready(function() {
+	  $('form').submit(function(e) {
+		e.preventDefault(); // Prevent default form submission
+		$.ajax({
+		  type: 'POST',
+		  url: 'https://api.web3forms.com/submit',
+		  data: $(this).serialize(), // Serialize form data
+		  success: function(response) {
+			// Handle successful form submission (e.g., show success message)
+			$('#successMessage').fadeIn();
+		  },
+		  error: function(xhr, status, error) {
+			// Handle form submission error
+			console.error(xhr.responseText);
+		  }
+		});
+	  });
+	});
+  </script>
+  
     
   </body>
 </html>

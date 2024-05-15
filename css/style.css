@@ -9217,6 +9217,19 @@ textarea.form-control {
   .heading-section.heading-section-white p {
     color: rgba(255, 255, 255, 0.9); }
 
+  .success-message {
+    display: none; /* Hide the success message by default */
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745; /* Green color for success */
+    color: #fff; /* White text color */
+    border-radius: 5px;
+  }
+  
+  .success-message p {
+    margin: 0; /* Remove default margin for paragraphs */
+  }
+    
 .img,
 .blog-img,
 .user-img {
